@@ -1,0 +1,12 @@
+name:
+  css: '#productTitle'
+  type: Text
+price:
+  css: '#price_inside_buybox'
+  type: Text
+product_description:
+  css: '#productDescription'
+  type: Text
+product_not_availble:
+  css: '#exports_desktop_outOfStockBuyBox'
+  type: Text

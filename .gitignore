@@ -1,0 +1,4 @@
+*.log
+/venv
+cred.json
+nohup.out
