@@ -58,14 +58,12 @@ def scrape(url):
         return None
     return e.extract(r.text)
 
-while True:
-    with open("urls.txt","r") as urllist:
-        for url in urllist.readlines():
-            data = scrape(url)
-            if not(data['product_not_availble']):
-                message = f"Subject: {data['name']} is available on Amazon!\n\n {data['name']} is available! Get it now! Current price is {data['price']}\n\nLink: {url}"
-                send_email(message)
-                logger.info(f"Message subject: {data['name']} is available on Amazon!")
+with open("urls.txt","r") as urllist:
+    for url in urllist.readlines():
+        data = scrape(url)
+        if (data['product_not_availble']) and (data['price']):
+            message = f"Subject: {data['name']} is available on Amazon!\n\n {data['name']} is available! Get it now! Current price is {data['price']}\n\nLink: {url}"
+            send_email(message)
+            logger.info(f"Message subject: {data['name']} is available on Amazon!")
 
-    logger.info("Script completed with no issue! Sleeping for 15 minutes")
-    time.sleep(900)
+logger.info("Script completed with no issue!")
